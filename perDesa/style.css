@@ -1761,6 +1761,13 @@ body {
   .hero-image {
     display: none;
   }
+
+  .btn-primary{
+    padding: 18px 30px;
+    
+  }
+
+  
 }
 
 
@@ -1867,5 +1874,15 @@ body {
   .news-card {
     max-width: 340px;
     margin: 0 auto;
+  }
+  #kunjungi-kami h2 {
+    font-size: 1.3rem;
+  }
+  .section-title{
+     font-size: 1.3rem;
+  }
+
+  .supervisors-title {
+    font-size: 1.4rem;
   }
 }
