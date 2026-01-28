@@ -564,7 +564,7 @@
 </section>
 
 <section class="news-section">
-  <h2 class="section-title">Kabar Koperasi</h2>
+  <h2 class="section-title">Berita Koperasi</h2>
 
   <div class="news-grid">
     <article class="news-card">
@@ -639,5 +639,38 @@
     </section>
 
     <script src="script.js"></script>
+
+    <button id="scrollTopBtn" aria-label="Scroll to top">
+  ↑
+</button>
+
 </body>
+<script>
+  const btn = document.getElementById("scrollTopBtn");
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener("scroll", () => {
+    const currentScrollY = window.scrollY;
+
+    // scroll ke bawah → muncul
+    if (currentScrollY > lastScrollY && currentScrollY > 150) {
+      btn.classList.add("show");
+    }
+    // scroll ke atas → hilang
+    else {
+      btn.classList.remove("show");
+    }
+
+    lastScrollY = currentScrollY;
+  });
+
+  btn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+</script>
+
+
 </html>

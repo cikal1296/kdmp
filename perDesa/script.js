@@ -1,3 +1,5 @@
+
+
 // Smooth Scrolling for Anchor Links
 document.addEventListener('DOMContentLoaded', function() {
     // Add smooth scrolling to all anchor links
@@ -898,3 +900,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+
