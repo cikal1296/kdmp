@@ -243,7 +243,7 @@ body {
 }
 
 .section-title {
-    font-size: 2.5rem;
+    font-size: 1.7rem;
     font-weight: 700;
     text-align: center;
     margin-bottom: 60px;
@@ -1491,7 +1491,7 @@ body {
 
 #kunjungi-kami h2 {
   color: var(--merah-utama);
-  font-size: 2.5rem;
+  font-size: 1.7rem;
   text-align: center;
   margin-bottom: 30px;
   border-bottom: 3px solid var(--merah-utama);
@@ -1621,46 +1621,7 @@ body {
   box-shadow: 0 8px 20px rgba(220, 38, 38, 0.4);
 }
 
-/* ===== LOKASI SEKITAR ===== */
-.lokasi-sekitar {
-  background: var(--merah-sangat-muda);
-  padding: 30px;
-  border-radius: 15px;
-  border: 2px solid var(--merah-utama);
-  margin-top: 30px;
-}
 
-.lokasi-sekitar h3 {
-  color: var(--merah-utama);
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.lokasi-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 15px;
-  margin-top: 15px;
-}
-
-.lokasi-item {
-  background: var(--putih);
-  padding: 12px 18px;
-  border-radius: 10px;
-  border-left: 5px solid var(--merah-utama);
-  font-size: 14px;
-  font-weight: 600;
-  transition: all 0.3s;
-  color: var(--coklat-merah);
-  cursor: pointer;
-}
-
-.lokasi-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.2);
-  background: var(--merah-muda);
-}
 
 /* ===== RESPONSIF ===== */
 @media (max-width: 768px) {
@@ -1686,3 +1647,111 @@ body {
     padding: 20px 15px;
   }
 }
+
+
+/* Reset dan font dasar */
+
+
+/* Container berita */
+.berita {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    gap: 20px;
+    border-radius: 8px;
+}
+
+/* Kartu berita */
+.card-berita {
+    
+    width: 300px;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-berita:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Header kartu (bagian merah) */
+.card-berita::before {
+    content: "";
+    display: block;
+    height: 6px;
+   
+    width: 100%;
+}
+
+/* Gambar */
+.card-berita img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    border-bottom: 1px solid #eee;
+}
+
+/* Kontainer teks */
+.card-berita > div {
+    padding: 20px;
+}
+
+/* Judul berita */
+.card-berita p:first-of-type {
+    font-size: 17px;
+    font-weight: 500;
+    color: #222;
+    line-height: 1.4;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Tanggal berita */
+.card-berita p:last-of-type {
+    font-size: 14px;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Ikon kalender sebelum tanggal */
+
+
+/* Badge merah di sudut kiri atas gambar */
+.card-berita {
+    position: relative;
+}
+
+.card-berita::after {
+    content: "TERBARU                 ";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #d32f2f;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+}
+
+/* Responsif */
+@media (max-width: 400px) {
+    .card-berita {
+        width: 100%;
+        max-width: 320px;
+    }
+    
+    .card-berita p:first-of-type {
+        font-size: 18px;
+    }
+}
+
