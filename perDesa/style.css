@@ -1885,4 +1885,8 @@ body {
   .supervisors-title {
     font-size: 1.4rem;
   }
+
+  .about-image{
+    display: none;
+  }
 }
