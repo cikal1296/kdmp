@@ -1508,7 +1508,6 @@ body {
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 8px 25px rgba(220, 38, 38, 0.2);
-  border: 3px solid var(--merah-utama);
 }
 
 .map-markers {
@@ -1567,7 +1566,6 @@ body {
   opacity: 0;
   transition: opacity 0.3s;
   pointer-events: none;
-  border: 1.5px solid var(--merah-utama);
   color: var(--merah-utama);
 }
 
@@ -1585,7 +1583,6 @@ body {
   background: linear-gradient(135deg, var(--merah-sangat-muda) 0%, var(--merah-muda) 100%);
   padding: 20px;
   border-radius: 12px;
-  border: 2px solid var(--merah-utama);
   box-shadow: 0 5px 15px rgba(220, 38, 38, 0.1);
   margin: 20px auto;
   max-width: 500px;
@@ -1763,7 +1760,7 @@ body {
   }
 
   .btn-primary{
-    padding: 18px 30px;
+    padding-left:30px;
     
   }
 
@@ -1926,4 +1923,204 @@ body {
 /* Hover halus */
 #scrollTopBtn:hover {
   background: #b00000;
+}
+
+
+
+    .unitusaha-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 60px 20px;
+    }
+
+    .unitusaha-heading {
+        text-align: center;
+        color: #c62828;
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 40px;
+    }
+
+    .unitcard-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+    }
+
+    .unitcard-item {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        height: 300px;
+    }
+
+    .unitcard-item:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .unitcard-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .unitcard-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.4) 60%, transparent 100%);
+        padding: 30px 20px 20px;
+    }
+
+    .unitcard-number {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .unitcard-title {
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        line-height: 1.4;
+    }
+
+    /* Responsive untuk tablet */
+    @media (max-width: 992px) {
+        .unitcard-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+    }
+
+    /* Responsive untuk mobile */
+    @media (max-width: 640px) {
+        .unitusaha-section {
+            padding: 40px 15px;
+        }
+
+        .unitusaha-heading {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .unitcard-grid {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        .unitcard-item {
+            height: 250px;
+        }
+
+        .unitcard-title {
+            font-size: 1rem;
+        }
+
+        .unitcard-number {
+            font-size: 1.2rem;
+        }
+
+        .unitcard-overlay {
+            padding: 20px 15px 15px;
+        }
+    }
+
+    /* Navigation Container */
+.nav {
+    display: flex;
+    justify-content: flex-end; /* Posisikan di kanan */
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+/* Navigation List */
+.nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 32px; /* Jarak antar menu */
+}
+
+/* Navigation Items */
+.nav li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Links */
+.nav a {
+    text-decoration: none;
+    color: white; /* Warna teks gelap */
+    font-weight: 600;
+    font-size: 16px;
+    padding: 8px 0;
+    position: relative;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+/* Hover Effect */
+.nav a:hover {
+    color: #d32f2f; /* Warna merah sesuai tema */
+}
+
+/* Active/Current Page Indicator */
+.nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #d32f2f;
+    transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .nav{
+        margin-bottom: 50px;
+    }
+    .nav ul {
+        gap: 20px;
+    }
+    
+    .nav a {
+        font-size: 2px;
+    }
+}
+
+@media (max-width: 576px) {
+    .nav {
+        justify-content: center; /* Tengahkan di mobile */
+        width: 100%;
+    }
+    
+    .nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .nav a {
+        font-size: 14px;
+    }
+}
+.nav {
+  position: relative;
+  z-index: 9999;
 }

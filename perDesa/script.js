@@ -759,75 +759,323 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Add modal styles
         const modalStyles = `
-            .summary-modal {
-                position: fixed;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: rgba(0,0,0,0.5);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 10000;
-                padding: 20px;
-            }
-            .summary-modal .modal-content {
-                background: white;
-                border-radius: 16px;
-                width: 100%;
-                max-width: 700px;
-                max-height: 90vh;
-                overflow-y: auto;
-            }
-            .summary-stats {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-                margin-bottom: 30px;
-            }
-            .summary-stat {
-                padding: 25px;
-                background: #f8f9fa;
-                border-radius: 12px;
-                text-align: center;
-                border-top: 4px solid #dc3545;
-            }
-            .summary-stat .stat-value {
-                font-size: 1.8rem;
-                font-weight: 700;
-                color: #dc3545;
-                margin-bottom: 10px;
-            }
-            .summary-stat .stat-label {
-                color: #666;
-                font-size: 0.95rem;
-            }
-            .summary-table {
-                margin-top: 30px;
-            }
-            .summary-table h4 {
-                margin-bottom: 15px;
-                color: #2c3e50;
-            }
-            .summary-table table {
-                width: 100%;
-                border-collapse: collapse;
-            }
-            .summary-table th {
-                background: #f0f0f0;
-                padding: 12px 15px;
-                text-align: left;
-                color: #555;
-                font-weight: 600;
-            }
-            .summary-table td {
-                padding: 12px 15px;
-                border-bottom: 1px solid #f0f0f0;
-            }
-            .summary-table tr:hover {
-                background: #f9f9f9;
-            }
+           /* Reset dan Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Modal Container */
+.summary-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+/* Modal Content */
+.modal-content {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 900px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: modalAppear 0.3s ease-out;
+    border-top: 4px solid #d32f2f;
+}
+
+@keyframes modalAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Modal Header */
+.modal-header {
+    background: linear-gradient(135deg, #b71c1c 0%, #d32f2f 100%);
+    color: white;
+    padding: 24px 32px;
+    text-align: center;
+    position: relative;
+}
+
+.modal-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, #ff9800 0%, #ff5722 100%);
+}
+
+.modal-header h3 {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin: 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Modal Body */
+.modal-body {
+    padding: 32px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+/* Summary Stats */
+.summary-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+.summary-stat {
+    background: linear-gradient(to bottom right, #fff5f5, #ffeaea);
+    border-radius: 10px;
+    padding: 24px;
+    text-align: center;
+    border: 1px solid #ffcdd2;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.summary-stat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: #d32f2f;
+}
+
+.summary-stat:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(211, 47, 47, 0.15);
+    border-color: #d32f2f;
+}
+
+.stat-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: #b71c1c;
+    margin-bottom: 8px;
+    line-height: 1.2;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.stat-label {
+    font-size: 16px;
+    color: #d32f2f;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* Summary Table */
+.summary-table h4 {
+    font-size: 20px;
+    color: #b71c1c;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #ffcdd2;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.summary-table h4::before {
+    content: '';
+    width: 6px;
+    height: 24px;
+    background: #d32f2f;
+    border-radius: 3px;
+}
+
+.summary-table table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(211, 47, 47, 0.08);
+    border: 1px solid #ffcdd2;
+}
+
+.summary-table thead {
+    background: linear-gradient(to right, #d32f2f, #f44336);
+    color: white;
+}
+
+.summary-table th {
+    padding: 18px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+    position: relative;
+}
+
+.summary-table th:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.summary-table tbody tr {
+    border-bottom: 1px solid #ffebee;
+    transition: all 0.2s ease;
+}
+
+.summary-table tbody tr:nth-child(even) {
+    background-color: #fff5f5;
+}
+
+.summary-table tbody tr:hover {
+    background-color: #ffebee;
+    transform: scale(1.002);
+}
+
+.summary-table td {
+    padding: 16px;
+    color: #5d4037;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.summary-table td:first-child {
+    font-weight: 700;
+    color: #b71c1c;
+    border-left: 3px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.summary-table tr:hover td:first-child {
+    border-left-color: #d32f2f;
+}
+
+.summary-table td:nth-child(2) {
+    color: #388e3c;
+    font-weight: 700;
+    background: rgba(76, 175, 80, 0.1);
+    border-radius: 4px;
+    margin: 2px;
+}
+
+.summary-table td:nth-child(3) {
+    color: #d84315;
+    font-weight: 500;
+}
+
+.summary-table td:last-child {
+    font-weight: 700;
+    color: #bf360c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modal-content {
+        max-height: 95vh;
+        border-radius: 8px;
+    }
+    
+    .modal-body {
+        padding: 24px 16px;
+    }
+    
+    .summary-stats {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+    
+    .stat-value {
+        font-size: 28px;
+    }
+    
+    .summary-table table {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    .summary-table th,
+    .summary-table td {
+        padding: 12px 10px;
+        font-size: 14px;
+    }
+    
+    .modal-header h3 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-header {
+        padding: 20px 16px;
+    }
+    
+    .modal-header h3 {
+        font-size: 18px;
+    }
+    
+    .summary-table h4 {
+        font-size: 18px;
+    }
+    
+    .stat-value {
+        font-size: 24px;
+    }
+    
+    .stat-label {
+        font-size: 14px;
+    }
+    
+    .summary-stat::before {
+        width: 3px;
+    }
+}
+
+/* Scrollbar Styling */
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: #ffebee;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: #d32f2f;
+    border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: #b71c1c;
+}
         `;
         
         const styleElement = document.createElement('style');
